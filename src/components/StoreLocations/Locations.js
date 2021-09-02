@@ -5,7 +5,7 @@ export const Locations = () => {
     const [storeLocations, getStoreLocations] = useState([])
 
     useEffect( () => {
-        fetch("http://localhost:8088/locations")
+        fetch("http://localhost:8088/stores")
         .then (res => res.json())
         .then (
             (data) => getStoreLocations(data)
