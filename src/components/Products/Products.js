@@ -4,6 +4,16 @@ import { useEffect, useState } from "react"
 export const Products = () => {
     const [storeProducts, getProducts] = useState([])
 
+    const postProducts = (object) => {
+        const fetchOption = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(object)
+        }
+        return fetch("http://localhost:8088/purchases",  fetchOption)
+    }
 
     useEffect( 
         () => {
@@ -27,7 +37,15 @@ export const Products = () => {
                 {
                     storeProducts.map(
                         (product) => {
-                            return <div key={`product--${product.id}`}>We have {product.name}, which is a {product.productType.name}!</div>
+                            return <div key={`product--${product.id}`}>We have {product.name}, which is a {product.productType.name}!<button onClick = {
+                                () => {
+                                    const productObject = {
+                                        customerId: parseInt(localStorage.getItem("kandy_customer")),
+                                        productName: product.name,
+                                        productId: product.id
+                                    }
+                                    postProducts(productObject)
+                                }}>Purchase Item</button></div>
                         }
 
                     )

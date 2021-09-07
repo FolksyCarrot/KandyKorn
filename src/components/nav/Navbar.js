@@ -29,6 +29,10 @@ export const NavBar = () => {
                 <Link className ="navBar_link" to="/customersForm">Customers Form</Link>
             </li>
 
+            <li className="navbar_list">
+                <Link className ="navBar_link" to="/customersOrders">Customers Orders</Link>
+            </li>
+
             
         </ul>
 
