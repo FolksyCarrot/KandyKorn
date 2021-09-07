@@ -13,6 +13,20 @@ useEffect(
     }, []
 )
 
+const deleteEmployee = (id) => {
+    fetch(`http://localhost:8088/employees/${id}`, {
+        method: "DELETE"
+    })
+    .then ( () => {
+        return fetch("http://localhost:8088/employees")
+            .then(res => res.json())
+            .then((data) => {
+                getEmployees(data)
+            })
+
+    }
+    )
+}
 
     return(
         <>
@@ -21,7 +35,9 @@ useEffect(
         {
            employees.map (
                (employee) => {
-                       return <li key ={`employee--${employee.id}`}> {employee.name} {employee.isManager? "true": "false"} {employee.hourlyRate}</li>
+                       return <li key ={`employee--${employee.id}`}> {employee.name} {employee.isManager? "true": "false"} {employee.hourlyRate}<button onClick = {
+                           () => deleteEmployee(employee.id)
+                       }>Fire Employee</button></li>
                     }
                 )
         }
