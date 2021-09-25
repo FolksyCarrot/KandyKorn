@@ -19,8 +19,7 @@ export const Locations = () => {
                 storeLocations.map(
                     (store) => {
                         return <div key={`store--${store.id}`}> {store.city} located at {store.address}</div>
-                    }
-                    
+                    }  
                 )
             }
         
