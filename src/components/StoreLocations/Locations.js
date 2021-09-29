@@ -21,6 +21,7 @@ export const Locations = () => {
                         return <div key={`store--${store.id}`}> {store.city} located at {store.address}</div>
                     }  
 
+                    
                 )
             }
         
